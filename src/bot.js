@@ -102,6 +102,9 @@ const rr = async(message)=> {
     cron.schedule('55 8-17 * * 1-5', () => {
         message.reply(`@everyone ${whichPeriod()} is going to start`)
         console.log('running');
+    }, {
+        scheduled: true,
+        timezone: "Asia/India"
     });
 }
 
