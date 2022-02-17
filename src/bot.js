@@ -79,7 +79,7 @@ const tt = {
         Wednesday: subjects.AI,
         Thursday: subjects.NO_PERIOD,
         Friday: subjects.NO_PERIOD
-    },
+    }
 }
 
 function printTable(tt){
@@ -99,8 +99,8 @@ function printTable(tt){
 printTable(tt)
 
 const rr = async(message)=> {
-    cron.schedule('55 8-16 * * 1-5', () => {
-        message.reply(`@everyone ${whichPeriod()}`)
+    cron.schedule('55 8-17 * * 1-5', () => {
+        message.reply(`@everyone ${whichPeriod()} is going to start`)
         console.log('running');
     });
 }
@@ -109,7 +109,7 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 
 function whichPeriod() {
     const d = new Date();
-    let hour = d.getHours()
+    let hour = d.getHours() + 1
     let day = weekday[d.getDay()];
     console.log(`${day} and ${hour}`)
     let period = "No Period"
