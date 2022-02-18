@@ -100,19 +100,22 @@ printTable(tt)
 
 const rr = async(message)=> {
     cron.schedule('55 8-17 * * 1-5', () => {
-        message.reply(`@everyone ${whichPeriod()} is going to start`)
+        message.reply(`@everyone ${whichPeriod(1)} is going to start`)
         console.log('running');
     }, {
         scheduled: true,
-        timezone: "Asia/India"
+        timezone: "asia/kolkata"
     });
 }
 
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
-function whichPeriod() {
+function whichPeriod(flag=0) {
     const d = new Date();
-    let hour = d.getHours() + 1
+    let hour;
+    if(flag == 1)
+    hour = d.getHours() + 1
+    else hour = d.getHours()
     let day = weekday[d.getDay()];
     console.log(`${day} and ${hour}`)
     let period = "No Period"
